@@ -1,0 +1,6 @@
+EmployeeID,FirstName,LastName,Email,Phone,Department,Position,HireDate,Status,Role
+1,Abubeker,Ali,abubeker.ali@example.com,251911000001,HR,HR Manager,2021-03-01,Active,Admin
+2,Maryam,Solomon,maryam.solomon@example.com,251911000002,Finance,Accountant,2022-07-15,Active,Finance
+3,Kenan,Hussein,kenan.hussein@example.com,251911000003,Inventory,Store Clerk,2023-01-20,Active,Inventory
+4,Sarah,Yusuf,sarah.yusuf@example.com,251911000004,IT,System Analyst,2020-11-05,Active,IT
+5,Abel,Getachew,abel.getachew@example.com,251911000005,Sales,Sales Rep,2024-02-10,Active,Sales

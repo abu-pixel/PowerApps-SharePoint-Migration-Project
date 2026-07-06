@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Migration Simulation - Abubeker Ahmedel</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+        .header { background: #2c3e50; color: white; padding: 30px; border-radius: 10px; }
+        .card { background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .badge { display: inline-block; background: #3498db; color: white; padding: 5px 15px; border-radius: 20px; margin: 5px; }
+        pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .stat { background: #ecf0f1; padding: 15px; border-radius: 5px; text-align: center; }
+        .demo-btn { background: #27ae60; color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .demo-btn:hover { background: #229954; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏢 PowerApps & SharePoint Migration Simulation</h1>
+        <p>By: Abubeker Ahmedel | ERP & Database Administration Project</p>
+        <div>
+            <span class="badge">SQL</span>
+            <span class="badge">ERP</span>
+            <span class="badge">SharePoint</span>
+            <span class="badge">PowerApps</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📊 System Overview</h2>
+        <div class="grid">
+            <div class="stat"><h3>4</h3><p>Database Tables</p></div>
+            <div class="stat"><h3>8</h3><p>Procedures</p></div>
+            <div class="stat"><h3>6</h3><p>SQL Queries</p></div>
+            <div class="stat"><h3>7</h3><p>Admin Policies</p></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🗄️ Database Schema</h2>
+        <pre>
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FullName NVARCHAR(100),
+    Department NVARCHAR(50),
+    Role NVARCHAR(50),
+    Email NVARCHAR(100),
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE Projects (
+    ProjectID INT PRIMARY KEY,
+    ProjectName NVARCHAR(100),
+    StartDate DATE,
+    EndDate DATE,
+    Status NVARCHAR(50)
+);
+
+CREATE TABLE Tasks (
+    TaskID INT PRIMARY KEY,
+    ProjectID INT,
+    AssignedTo INT,
+    TaskName NVARCHAR(100),
+    Status NVARCHAR(50),
+    DueDate DATE,
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID),
+    FOREIGN KEY (AssignedTo) REFERENCES Employees(EmployeeID)
+);
+
+CREATE TABLE SystemLogs (
+    LogID INT PRIMARY KEY,
+    TableName NVARCHAR(50),
+    Action NVARCHAR(50),
+    ChangedBy NVARCHAR(100),
+    ChangeDate DATETIME DEFAULT GETDATE(),
+    Description NVARCHAR(200)
+);
+        </pre>
+    </div>
+
+    <div class="card">
+        <h2>🔧 Sample SQL Procedure</h2>
+        <pre>
+CREATE PROCEDURE sp_AddTaskAndLog
+    @TaskID INT,
+    @ProjectID INT,
+    @AssignedTo INT,
+    @TaskName NVARCHAR(100),
+    @Status NVARCHAR(50),
+    @DueDate DATE,
+    @ChangedBy NVARCHAR(100)
+AS
+BEGIN
+    INSERT INTO Tasks (TaskID, ProjectID, AssignedTo, TaskName, Status, DueDate)
+    VALUES (@TaskID, @ProjectID, @AssignedTo, @TaskName, @Status, @DueDate);
+
+    INSERT INTO SystemLogs (LogID, TableName, Action, ChangedBy, Description)
+    VALUES (NEXT VALUE FOR LogSeq, 'Tasks', 'INSERT', @ChangedBy, 
+            CONCAT('Task added: ', @TaskName));
+END;
+        </pre>
+    </div>
+
+    <div class="card">
+        <h2>📋 Administrative Procedures</h2>
+        <ul>
+            <li><strong>Procedure-01:</strong> All tables must use PascalCase names</li>
+            <li><strong>Procedure-02:</strong> Every update must be logged in SystemLogs</li>
+            <li><strong>Procedure-03:</strong> Only Admin role can perform DELETE operations</li>
+            <li><strong>Procedure-04:</strong> Daily backup at 2 AM, transaction logs every 30 minutes</li>
+            <li><strong>Procedure-05:</strong> All database connections must be encrypted</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>🔄 Migration Process (On-Premises → Cloud)</h2>
+        <ol>
+            <li>✅ Extract data from on-premises ERP</li>
+            <li>✅ Clean and validate data</li>
+            <li>✅ Transform into SharePoint structure</li>
+            <li>✅ Deploy to cloud structure</li>
+            <li>✅ Create logs of each step</li>
+            <li>✅ Validate migration success</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h2>📁 Repository Contents</h2>
+        <ul>
+            <li><code>schema.sql</code> - Database schema definition</li>
+            <li><code>queries.sql</code> - Sample SQL queries and stored procedures</li>
+            <li><code>sample_data.csv</code> - Sample data for testing</li>
+            <li><code>procedures.md</code> - Administrative procedures documentation</li>
+            <li><code>admin_scripts.md</code> - Backup and admin scripts</li>
+            <li><code>automation_examples.gs</code> - Google Apps Script automation</li>
+            <li><code>social_media_scheduler.md</code> - Social media module documentation</li>
+            <li><code>architecture.md</code> - System architecture documentation</li>
+        </ul>
+    </div>
+
+    <div class="card" style="background: #eaf2f8;">
+        <h2>🎯 Skills Demonstrated</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <span class="badge" style="background: #2980b9;">ERP Systems</span>
+            <span class="badge" style="background: #8e44ad;">SQL/DBA</span>
+            <span class="badge" style="background: #16a085;">Project Management</span>
+            <span class="badge" style="background: #c0392b;">Data Migration</span>
+            <span class="badge" style="background: #f39c12;">SharePoint</span>
+            <span class="badge" style="background: #2c3e50;">PowerApps</span>
+            <span class="badge" style="background: #27ae60;">Automation</span>
+            <span class="badge" style="background: #34495e;">Documentation</span>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 20px; background: #2c3e50; color: white; border-radius: 10px;">
+        <p>📧 <a href="mailto:your.email@example.com" style="color: #3498db;">Contact Abubeker Ahmedel</a></p>
+        <p style="font-size: 14px; opacity: 0.8;">© 2024 ERP Migration Simulation Project</p>
+    </div>
+</body>
+</html>

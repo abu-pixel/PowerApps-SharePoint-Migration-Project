@@ -1,6 +1,6 @@
 PowerApps & SharePoint Migration Simulation Project
 
-By: Abubeker Ahmedel
+By: Abubeker Ahmedel Bedewi
 
 Overview
 
